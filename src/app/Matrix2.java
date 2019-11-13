@@ -10,41 +10,41 @@ public class Matrix2 {
         System.out.println(result.v4());
 
     }
-    public int[][] values = new int[2][2];
+    public float[][] values = new float[2][2];
 
-    public int v1() {
+    public float v1() {
         return values[0][0];
     }
 
-    public int v2() {
+    public float v2() {
         return values[0][1];
     }
 
-    public int v3() {
+    public float v3() {
         return values[1][0];
     }
 
-    public int v4() {
+    public float v4() {
         return values[1][1];
     }
 
-    public void v1(int i) {
+    public void v1(float i) {
         values[0][0] = 1;
     }
 
-    public void v2(int i) {
+    public void v2(float i) {
         values[0][1] = i;
     }
 
-    public void v3(int i) {
+    public void v3(float i) {
         values[1][0] = i;
     }
 
-    public void v4(int i) {
+    public void v4(float i) {
         values[1][1] = i;
     }
 
-    public Matrix2(int v1, int v2, int v3, int v4) {
+    public Matrix2(float v1, float v2, float v3, float v4) {
         this.values[0][0] = v1;
         this.values[0][1] = v2;
         this.values[1][0] = v3;
@@ -59,11 +59,11 @@ public class Matrix2 {
         return i.Add(k);
     }
 
-    public Matrix2 MultiplyBy(int n) {
+    public Matrix2 MultiplyBy(float n) {
         return new Matrix2(v1() * n, v2() * n, v3() * n, v4() * n);
     }
 
-    public static Matrix2 MultiplyBy(Matrix2 i, int n) {
+    public static Matrix2 MultiplyBy(Matrix2 i, float n) {
         return i.MultiplyBy(n);
     }
 
@@ -88,10 +88,18 @@ public class Matrix2 {
         return i.MultiplyBy(k);
     }
 
-    public int Determinant() {
+    public float Determinant() {
         return this.v1() * this.v4() - this.v2() * this.v3();
     }
-    public static int Determinant (Matrix2 i) {
+    public static float Determinant (Matrix2 i) {
         return i.Determinant();
+    }
+
+    public Matrix2 Reversed() {
+        return new Matrix2(this.v2(), this.v4(), this.v1(), this.v3()).MultiplyBy(1 / this.Determinant());
+    }
+
+    public static Matrix2 Reversed(Matrix2 i) {
+        return i.Reversed();
     }
 }
