@@ -13,10 +13,10 @@ class Factorial2 {
     }
 
     public static Integer Factorial(Integer n) {
-        if (n == 0 || n == 1) {
+        if (n == 0) {
             return 1;
         }
 
-        return Factorial(n - 1) * Factorial(n - 2);
+        return n * Factorial(n - 1);
     }
 }
